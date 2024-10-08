@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import styles from "./addTodoForm.module.css"; // Імпорт стилів як модулів
 
-const AddTodoForm = ({ onAdd }) => {
+interface AddTodoFormProps {
+  onAdd: (text: string) => void;
+}
+
+const AddTodoForm: FC<AddTodoFormProps> = ({ onAdd }) => {
   const [newTodo, setNewTodo] = useState("");
   console.log(newTodo);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onAdd(newTodo);
     setNewTodo("");
