@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useState } from "react";
 import styles from "./addTodoForm.module.css"; // Імпорт стилів як модулів
 
 interface AddTodoFormProps {
@@ -6,7 +6,7 @@ interface AddTodoFormProps {
 }
 
 const AddTodoForm: FC<AddTodoFormProps> = ({ onAdd }) => {
-  const [newTodo, setNewTodo] = useState("");
+  const [newTodo, setNewTodo] = useState<string>("");
   console.log(newTodo);
 
   const handleSubmit = (e: FormEvent) => {
@@ -21,7 +21,9 @@ const AddTodoForm: FC<AddTodoFormProps> = ({ onAdd }) => {
         type="text"
         placeholder="New todo"
         value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          setNewTodo(e.target.value)
+        }
         className={styles.input}
       />
       <button type="submit" className={styles.button}>

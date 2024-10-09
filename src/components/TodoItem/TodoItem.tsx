@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./todoItem.module.css";
-import { Task } from "../../App";
+import { Task } from "../../Types/types";
 
 interface TodoItemProps {
   todo: Task;
